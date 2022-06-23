@@ -2,6 +2,7 @@ body{
     font-family: 'Open Sans', Arial, sans-serif;
       color: #4d4e53;
   line-height: 1.5;
+
 }
 header {
   color: black;
@@ -23,6 +24,9 @@ code {
   margin: 10px;
   border-radius: 5px;
 }
+section li {
+  margin: 15px 0px 0px 20px;
+}
 code {
     margin-left: -20px;
     width: 100%;
@@ -31,4 +35,43 @@ code {
     padding-right: 45px;
     min-width: 233px;
   }
+#navbar{
+  border-color:rgba(0, 22, 22, 0.4);
+  left:0px;
+  top:0px;
+  border-right:solid rgba(0, 22, 22, 0.4);
+  width:300px;
+  height:100%;
+  min-width:290px;
+  position:fixed;
+
+  }
+#navbar ul {
+  height: 88%;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+#navbar li {
+  color: #4d4e53;
+  border-top: 1px solid;
+  list-style: none;
+  position: relative;
+  width: 100%;
+}
+#navbar a{
+  cursor:pointer;
+  padding:10px 30px;
+  display:block;
+    text-decoration: none;
+
+}
+#main-doc{
+position:absolute;
+margin-left:310px;
+}
+section article {
+  color: #4d4e53;
+  margin: 15px;
+  font-size: 0.96em;
 }
