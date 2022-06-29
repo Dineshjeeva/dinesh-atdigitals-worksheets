@@ -1,4 +1,4 @@
-@import 'https://fonts.googleapis.com/css?family=Lato:400,700';
+@import "https://fonts.googleapis.com/css?family=Lato:400,700";
 
 body {
   background-color: #eee;
@@ -13,6 +13,7 @@ body {
   margin-bottom: 20px;
   word-wrap: break-word;
 }
+
 #hero input[type="submit"]:hover {
   background-color: orange;
   transition: background-color 1s;
@@ -56,6 +57,7 @@ nav {
   font-weight: 300;
 }
 header {
+  flex-wrap: wrap;
   min-height: 75px;
   background-color: #eee;
   position: fixed;
@@ -102,6 +104,7 @@ a {
   flex-direction: row;
   justify-content: center;
 }
+
 .container {
   max-width: 1000px;
   width: 100%;
@@ -139,11 +142,10 @@ footer span {
   font-size: 0.9em;
 }
 .product ul {
- 
   margin: 15px 0;
 }
 .product ul li {
-padding: 5px 0; 
+  padding: 5px 0;
 }
 .product h2 {
   margin-top: 15px;
@@ -167,6 +169,7 @@ padding: 5px 0;
 }
 #features {
   margin-top: 30px;
+  scroll-margin: 50px;
 }
 * {
   margin: 0;
@@ -201,6 +204,7 @@ padding: 5px 0;
   margin-top: 50px;
   display: flex;
   justify-content: center;
+  scroll-margin: 50px;
 }
 
 #how-it-works > iframe {
@@ -211,4 +215,24 @@ ol {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+}
+@media (max-width: 800px) {
+  #pricing {
+    flex-direction: column;
+    align-items: center;
+  }
+  .product {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  nav ul {
+    flex-wrap: wrap;
+    display: block;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+    padding: 0 50px;
+  }
 }
