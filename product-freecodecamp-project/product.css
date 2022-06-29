@@ -1,4 +1,4 @@
-@import "https://fonts.googleapis.com/css?family=Lato:400,700";
+@import 'https://fonts.googleapis.com/css?family=Lato:400,700';
 
 body {
   background-color: #eee;
@@ -56,6 +56,7 @@ nav {
   font-weight: 300;
 }
 header {
+  min-height: 75px;
   background-color: #eee;
   position: fixed;
   top: 0;
@@ -68,7 +69,7 @@ header {
   flex-direction: column;
   align-items: center;
   margin: 10px;
-  width: calc(100% /3) ;
+  width: calc(100% / 3);
   border: 1px solid black;
   border-radius: 3px;
   text-align: center;
@@ -86,16 +87,20 @@ a {
   text-decoration: none;
 }
 .product button {
+  border: 0;
   background-color: #f1c40f;
-  font-weight: 200;
+  font-weight: 400;
   margin: 15px;
 }
+.product > button:hover {
+  background-color: orange;
+  transition: background-color 1s;
+}
 #pricing {
+  margin-top: 60px;
   display: flex;
   flex-direction: row;
-  text-align: center;
   justify-content: center;
-  margin-top: 60px;
 }
 .container {
   max-width: 1000px;
@@ -117,7 +122,6 @@ footer {
   font-size: 1em;
   font-weight: 900;
   text-transform: uppercase;
-  border: 3px black solid;
   border-radius: 2px;
   background: transparent;
   cursor: pointer;
@@ -133,6 +137,16 @@ footer span {
   display: flex;
   justify-content: flex-end;
   font-size: 0.9em;
+}
+.product ul {
+ 
+  margin: 15px 0;
+}
+.product ul li {
+padding: 5px 0; 
+}
+.product h2 {
+  margin-top: 15px;
 }
 
 #features .desc {
@@ -193,7 +207,7 @@ footer span {
   max-width: 560px;
   width: 100%;
 }
-ol{
+ol {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
