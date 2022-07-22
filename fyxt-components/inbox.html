@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    .fa_close {
+      font-style: normal;
+      font-size: 28px;
+      display: flex;
+      color: #768092;
+      border-radius: 50%;
+      align-items: center;
+      background-color: #dadfe6;
+      width: 30px;
+      height: 30px;
+      justify-content: center;
+    }
+    .fa_mini {
+      color: #768092;
+      font-size: 25px;
+      padding: 10px;
+      font-weight: bold;
+    }
+    .first_one {
+      width: 800px;
+      background-color: white;
+      margin: auto;
+    }
+
+    .column {
+      width: 400px;
+      padding: 10px;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+    }
+    .column_two {
+      width: 400px;
+      padding: 10px;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .buttn_div {
+      display: flex;
+      align-self: flex-end;
+    }
+    .row {
+      font-family: Roboto;
+      display: flex;
+      font-size: 14px;
+    }
+    .label_style {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .name_chk {
+      color: #192c49;
+      text-align: left;
+      padding-top: 20px;
+    }
+    .input-radio {
+      accent-color: #f55600;
+      width: 30px;
+
+      height: 20px;
+    }
+    .text_clr {
+      color: #768092;
+    }
+    .inbox_chk {
+      display: block;
+      padding: 10px;
+      width: 330px;
+      margin-top: 8px;
+      font-family: "Roboto";
+      color: #768092;
+    }
+    .title_hed {
+      font-size: 14px;
+    }
+    .heading_top {
+      text-align: left;
+      margin-top: -5px;
+      font-size: 24px;
+    }
+    .acc_radio {
+      color: #192c49;
+      text-align: left;
+    }
+    .allign_radio {
+      vertical-align: super;
+      margin-right: 70px;
+    }
+    .type_chk {
+      color: #192c49;
+      text-align: left;
+    }
+    .personal_inbox {
+      color: #192c49;
+      text-align: left;
+      padding-top: 35px;
+    }
+    .team_inbox {
+      color: #192c49;
+      text-align: left;
+    }
+    .label_txt {
+      display: flex;
+      justify-content: space-between;
+    }
+    .cancel_but {
+      color: #192c49;
+      font-weight: 500;
+      border: none;
+      border-radius: 4px;
+      margin-right: 20px;
+      background-color: #dadfe6;
+      width: 80px;
+      padding: 10px;
+      border-radius: 6px;
+    }
+    #name-labe {
+      font-weight: 500;
+    }
+    .create_but {
+      color: white;
+      background-color: #f55600;
+      border: none;
+      width: 110px;
+      padding: 10px;
+      border-radius: 6px;
+    }
+    .icon_style {
+      padding: 5px;
+      display: flex;
+      justify-content: end;
+    }
+  </style>
+  <body>
+    <div class="first_one">
+      <div class="icon_style">
+        <span><i class="fa_mini">&#x2013;</i></span>
+        <span><i class="fa_close">&times;</i></span>
+      </div>
+      <div class="row">
+        <div class="column">
+          <h1 class="heading_top">Create Inbox</h1>
+          <div class="type_chk">
+            <h2 class="title_hed">Type</h2>
+            <div class="label_style">
+              <div class="label_txt">
+                <label>
+                  <input
+                    name="user-recommend"
+                    value="Personal"
+                    type="radio"
+                    class="input-radio"
+                    checked=""
+                  /><label class="allign_radio">Personal</label>
+                </label>
+              </div>
+              <div>
+                <label class="side_radio">
+                  <input
+                    name="user-recommend"
+                    value="team"
+                    type="radio"
+                    class="input-radio"
+                    checked=""
+                  /><label class="allign_radio">Team</label>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="name_chk">
+              <h2 class="title_hed">Name</h2>
+
+              <input
+                type="text"
+                name="name"
+                id="name"
+                class="inbox_chk"
+                placeholder="Enter your name for inbox"
+                required=""
+              />
+            </div>
+            <div class="acc_radio">
+              <h2 class="title_hed">Account</h2>
+              <div class="label_style">
+                <label>
+                  <input
+                    name="new"
+                    value="gmail_gsuite"
+                    type="radio"
+                    class="input-radio"
+                    checked=""
+                  /><label class="allign_radio">Gmail or Gsuite</label>
+                </label>
+
+                <label class="align_radio">
+                  <input
+                    name="new"
+                    value="others"
+                    type="radio"
+                    class="input-radio"
+                    checked=""
+                  /><label class="allign_radio">Others</label>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column_two">
+          <div class="personal_inbox">
+            <h2 class="title_hed">Personal Inbox</h2>
+            <p class="text_clr">
+              Lorium ipsum dolor sit amet,consetetur sadipsucing elitr, send
+              diam nonumy eirmod tempor invidunt ut labore et dolore magna
+              aliquyam
+            </p>
+          </div>
+          <div class="team_inbox">
+            <h2 class="title_hed">Team Inbox</h2>
+            <p class="text_clr">
+              Lorium ipsum dolor sit amet,consetetur sadipsucing elitr, send
+              diam nonumy eirmod tempor invidunt ut labore et dolore magna
+              aliquyam
+            </p>
+          </div>
+          <div class="buttn_div">
+            <button class="cancel_but" type="button">Cancel</button>
+            <button class="create_but" type="button">Create Inbox</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
