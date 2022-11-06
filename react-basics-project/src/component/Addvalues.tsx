@@ -6,8 +6,11 @@ import Optionshead from "./Optionshead";
 interface AddvaluesButtonProps {
   Name: string;
 }
+interface DefaultPropsOne {
+  onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+}
 
-export default function Addvalues() {
+export default function Addvalues({ onChange }: DefaultPropsOne) {
   const [addValues, setAddValues] = useState<AddvaluesButtonProps[]>([]);
   let addValueHandler = () => {
     setAddValues([...addValues, { Name: "" }]);
@@ -31,7 +34,7 @@ export default function Addvalues() {
       marginLeft="10px"
       border="1px solid black"
     >
-      <Optionshead />
+      <Optionshead onChange={onChange} />
       {addValues.map((element, index) => (
         <Box marginBottom="20px">
           <TextField

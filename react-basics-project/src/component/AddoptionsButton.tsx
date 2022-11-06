@@ -1,17 +1,13 @@
 import { Box, Button } from "@mui/material";
 
-import { MouseEventHandler } from "react";
-
 interface AddoptionButtonProps {
-  addOptionButton: MouseEventHandler<HTMLButtonElement> | undefined;
+  onChange: () => void;
 }
 
-export default function AddoptioinsButton({
-  addOptionButton,
-}: AddoptionButtonProps) {
+export default function AddoptioinsButton({ onChange }: AddoptionButtonProps) {
   return (
     <Box padding="60px">
-      <Button onClick={addOptionButton} variant="contained">
+      <Button onChange={onChange} onClick={onChange} variant="contained">
         Add Option
       </Button>
     </Box>

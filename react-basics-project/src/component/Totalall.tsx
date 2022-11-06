@@ -1,29 +1,43 @@
+import { ChangeEvent, useState } from "react";
+
 import Addoptions from "./Addoptions";
 import { Box } from "@mui/system";
 import { Button } from "@mui/material";
 
 export default function Totalall() {
-  const SubmitHandler = (event: { preventDefault: () => void }) => {
-    event.preventDefault();
-    const Data = {};
-    console.log(Data);
+  const [addOptions, setAddOptions] = useState<{ Name: string }[]>([]);
+
+  let handleOption = (
+    i: number,
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    let newAddOptions = [...addOptions];
+    newAddOptions[i]["Name"] = e.target.value;
+    setAddOptions(newAddOptions);
   };
 
-  // const [addoptions, setAddOptions] = useState<{ Name: string }[]>([]);
+  let addOptionHandler = () => {
+    setAddOptions([...addOptions, { Name: "" }]);
+  };
+  const submitHandler = () => {
+    //e.preventDefault();
 
-  // const [values, setValues] = useState("");
+    console.log(addOptions);
+  };
 
   return (
-    <form onSubmit={SubmitHandler}>
-      <Box height="350px">
-        <Addoptions />
+    <Box height="350px">
+      <Addoptions
+        addOptionHandler={addOptionHandler}
+        addOptions={addOptions}
+        handleOption={handleOption}
+      />
 
-        <Box padding="10px" paddingTop="25px">
-          <Button type="submit" variant="contained">
-            Submit
-          </Button>
-        </Box>
+      <Box padding="10px" paddingTop="25px">
+        <Button onClick={submitHandler} type="submit" variant="contained">
+          Submit
+        </Button>
       </Box>
-    </form>
+    </Box>
   );
 }

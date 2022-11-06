@@ -1,30 +1,30 @@
 import AddoptioinsButton from "./AddoptionsButton";
 import Addvalues from "./Addvalues";
 import { Box } from "@mui/material";
-import { useState } from "react";
+import { ChangeEvent } from "react";
 
-interface AddvalueProps {
-  Name: string;
+interface defaultProps {
+  addOptionHandler: () => void;
+  addOptions: { Name: string }[];
+
+  handleOption: (
+    i: number,
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
 }
 
-export default function Addoptions() {
-  const [addoptions, setAddOptions] = useState<AddvalueProps[]>([]);
-  // const [values, setValues] = useState("");
-
-  let addOptionsHandler = () => {
-    setAddOptions([...addoptions, { Name: "" }]);
-  };
-  console.log(addoptions);
-  // const SubmitHandlers=()=>{
-  //   setAddOptions([...addoptions, { Name: "" }])
-  // }
+export default function Addoptions({
+  addOptionHandler,
+  addOptions,
+  handleOption,
+}: defaultProps) {
   return (
     <Box paddingTop="10px" display="flex">
-      {addoptions.map((element, index) => (
-        <Addvalues />
+      {addOptions.map((element, index) => (
+        <Addvalues onChange={(e) => handleOption(index, e)} />
       ))}
       <Box marginLeft="10px" border="1px solid black">
-        <AddoptioinsButton addOptionButton={addOptionsHandler} />
+        <AddoptioinsButton onChange={addOptionHandler} />
       </Box>
     </Box>
   );
