@@ -1,11 +1,23 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 import Addoptions from "./Addoptions";
 import { Box } from "@mui/system";
 import { Button } from "@mui/material";
 
+// interface AddvaluesButtonProps {
+//   Name: string;
+// }
+
+// type Item = [];
+// type Statealign = {
+//   Name: string;
+//   options: Item[];
+// };
+
 export default function Totalall() {
-  const [addOptions, setAddOptions] = useState<{ Name: string }[]>([]);
+  const [addOptions, setAddOptions] = useState<
+    { Name: string; Option: string[] }[]
+  >([]);
 
   let handleOption = (
     i: number,
@@ -17,27 +29,47 @@ export default function Totalall() {
   };
 
   let addOptionHandler = () => {
-    setAddOptions([...addOptions, { Name: "" }]);
+    setAddOptions([...addOptions, { Name: "", Option: [] }]);
   };
-  const submitHandler = () => {
-    //e.preventDefault();
+
+  let addValueHandler = (i: number) => {
+    let newAddOptions = [...addOptions];
+    newAddOptions[i]["Option"] = [...newAddOptions[i]["Option"], ""];
+    setAddOptions(newAddOptions);
+  };
+  let handleChange = (
+    i: number,
+    item: number,
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    let newAddOptions = [...addOptions];
+    newAddOptions[i]["Option"][item] = e.target.value;
+    setAddOptions(newAddOptions);
+  };
+
+  const submitHandler = (e: FormEvent) => {
+    e.preventDefault();
 
     console.log(addOptions);
   };
 
   return (
-    <Box height="350px">
-      <Addoptions
-        addOptionHandler={addOptionHandler}
-        addOptions={addOptions}
-        handleOption={handleOption}
-      />
+    <form onSubmit={submitHandler}>
+      <Box height="350px">
+        <Addoptions
+          addOptionHandler={addOptionHandler}
+          addOptions={addOptions}
+          handleOption={handleOption}
+          addValueHandler={addValueHandler}
+          handleChange={handleChange}
+        />
 
-      <Box padding="10px" paddingTop="25px">
-        <Button onClick={submitHandler} type="submit" variant="contained">
-          Submit
-        </Button>
+        <Box padding="10px" paddingTop="25px">
+          <Button type="submit" variant="contained">
+            Submit
+          </Button>
+        </Box>
       </Box>
-    </Box>
+    </form>
   );
 }

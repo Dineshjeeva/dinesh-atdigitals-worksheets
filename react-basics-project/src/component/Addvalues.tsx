@@ -1,31 +1,24 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
-import { ChangeEvent, useState } from "react";
 
+import { ChangeEvent } from "react";
 import Optionshead from "./Optionshead";
 
-interface AddvaluesButtonProps {
-  Name: string;
-}
 interface DefaultPropsOne {
   onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-}
-
-export default function Addvalues({ onChange }: DefaultPropsOne) {
-  const [addValues, setAddValues] = useState<AddvaluesButtonProps[]>([]);
-  let addValueHandler = () => {
-    setAddValues([...addValues, { Name: "" }]);
-  };
-
-  let handleChange = (
+  addValueHandler: () => void;
+  addValues: string[];
+  handleChange: (
     i: number,
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    let newAddValues = [...addValues];
-    newAddValues[i]["Name"] = e.target.value;
-    setAddValues(newAddValues);
-  };
-  console.log(addValues);
+  ) => void;
+}
 
+export default function Addvalues({
+  onChange,
+  addValueHandler,
+  handleChange,
+  addValues,
+}: DefaultPropsOne) {
   return (
     <Box
       width="259px"
