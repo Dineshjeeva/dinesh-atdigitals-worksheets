@@ -6,9 +6,11 @@ import { Box } from "@mui/material";
 
 interface defaultProps {
   addOptionHandler: () => void;
-  addOptions: { Name: string; Option: string[] }[];
+  addOptions: { Name: string; Options: string[] }[];
   addValueHandler: (i: number) => void;
-  setAddOptions: Dispatch<SetStateAction<{ Name: string; Option: string[] }[]>>;
+  setAddOptions: Dispatch<
+    SetStateAction<{ Name: string; Options: string[] }[]>
+  >;
 
   handleChange: (
     i: number,
@@ -36,7 +38,8 @@ export default function Addoptions({
         <Addvalues
           onChange={(e) => handleOption(index, e)}
           addValueHandler={() => addValueHandler(index)}
-          addValues={addOptions[index]["Option"]}
+          addValues={addOptions[index]["Options"]}
+          OptionName={addOptions[index].Name}
           handleChange={(i, e) => handleChange(index, i, e)}
           addOptions={[]}
           setAddOptions={setAddOptions}

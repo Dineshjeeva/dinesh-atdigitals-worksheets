@@ -6,8 +6,12 @@ import { Button } from "@mui/material";
 
 export default function Totalall() {
   const [addOptions, setAddOptions] = useState<
-    { Name: string; Option: string[] }[]
-  >([]);
+    { Name: string; Options: string[] }[]
+  >([
+    { Name: "Size", Options: ["Small", "Medium"] },
+    { Name: "Color", Options: ["Red", "Green", "Blue"] },
+    { Name: "Style", Options: [] },
+  ]);
 
   let handleOption = (
     i: number,
@@ -19,12 +23,12 @@ export default function Totalall() {
   };
 
   let addOptionHandler = () => {
-    setAddOptions([...addOptions, { Name: "", Option: [] }]);
+    setAddOptions([...addOptions, { Name: "", Options: [] }]);
   };
 
   let addValueHandler = (i: number) => {
     let newAddOptions = [...addOptions];
-    newAddOptions[i]["Option"] = [...newAddOptions[i]["Option"], ""];
+    newAddOptions[i]["Options"] = [...newAddOptions[i]["Options"], ""];
     setAddOptions(newAddOptions);
   };
   let handleChange = (
@@ -33,7 +37,7 @@ export default function Totalall() {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     let newAddOptions = [...addOptions];
-    newAddOptions[i]["Option"][item] = e.target.value;
+    newAddOptions[i]["Options"][item] = e.target.value;
     setAddOptions(newAddOptions);
   };
 

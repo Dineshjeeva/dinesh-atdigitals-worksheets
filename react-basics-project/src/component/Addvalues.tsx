@@ -8,9 +8,12 @@ interface DefaultPropsOne {
   onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   addValueHandler: () => void;
   addValues: string[];
-  addOptions: { Name: string; Option: string[] }[];
+  addOptions: { Name: string; Options: string[] }[];
+  OptionName: string;
 
-  setAddOptions: Dispatch<SetStateAction<{ Name: string; Option: string[] }[]>>;
+  setAddOptions: Dispatch<
+    SetStateAction<{ Name: string; Options: string[] }[]>
+  >;
 
   handleChange: (
     i: number,
@@ -25,6 +28,7 @@ export default function Addvalues({
   addValues,
   setAddOptions,
   addOptions,
+  OptionName,
 }: DefaultPropsOne) {
   const removeInputFields = (index: number) => {
     const rows = [...addOptions];
@@ -41,10 +45,11 @@ export default function Addvalues({
       marginLeft="10px"
       border="1px solid black"
     >
-      <Optionshead onChange={onChange} />
-      {addValues.map((element, index) => (
+      <Optionshead OptionName={OptionName} onChange={onChange} />
+      {addValues.map((items, index) => (
         <Box marginBottom="20px">
           <TextField
+            value={items}
             InputProps={{
               endAdornment: (
                 <Button onClick={() => removeInputFields(index)}>

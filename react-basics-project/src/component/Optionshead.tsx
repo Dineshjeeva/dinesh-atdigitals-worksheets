@@ -6,9 +6,10 @@ interface defaultProps {
   onChange: (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
+  OptionName: string;
 }
 
-export default function Optionshead({ onChange }: defaultProps) {
+export default function Optionshead({ onChange, OptionName }: defaultProps) {
   return (
     <Box>
       <Typography paddingTop="20px" marginBottom="20px">
@@ -17,6 +18,7 @@ export default function Optionshead({ onChange }: defaultProps) {
           label="Option Name"
           variant="standard"
           onChange={onChange}
+          value={OptionName}
         />
       </Typography>
       <Typography marginBottom="20px">Options</Typography>
