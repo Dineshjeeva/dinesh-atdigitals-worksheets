@@ -4,16 +4,6 @@ import Addoptions from "./Addoptions";
 import { Box } from "@mui/system";
 import { Button } from "@mui/material";
 
-// interface AddvaluesButtonProps {
-//   Name: string;
-// }
-
-// type Item = [];
-// type Statealign = {
-//   Name: string;
-//   options: Item[];
-// };
-
 export default function Totalall() {
   const [addOptions, setAddOptions] = useState<
     { Name: string; Option: string[] }[]
@@ -62,6 +52,7 @@ export default function Totalall() {
           handleOption={handleOption}
           addValueHandler={addValueHandler}
           handleChange={handleChange}
+          setAddOptions={setAddOptions}
         />
 
         <Box padding="10px" paddingTop="25px">

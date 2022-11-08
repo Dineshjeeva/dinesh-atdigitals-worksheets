@@ -1,12 +1,15 @@
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
+
 import AddoptioinsButton from "./AddoptionsButton";
 import Addvalues from "./Addvalues";
 import { Box } from "@mui/material";
-import { ChangeEvent } from "react";
 
 interface defaultProps {
   addOptionHandler: () => void;
   addOptions: { Name: string; Option: string[] }[];
   addValueHandler: (i: number) => void;
+  setAddOptions: Dispatch<SetStateAction<{ Name: string; Option: string[] }[]>>;
+
   handleChange: (
     i: number,
     item: number,
@@ -25,6 +28,7 @@ export default function Addoptions({
   handleOption,
   addValueHandler,
   handleChange,
+  setAddOptions,
 }: defaultProps) {
   return (
     <Box paddingTop="10px" display="flex">
@@ -34,6 +38,8 @@ export default function Addoptions({
           addValueHandler={() => addValueHandler(index)}
           addValues={addOptions[index]["Option"]}
           handleChange={(i, e) => handleChange(index, i, e)}
+          addOptions={[]}
+          setAddOptions={setAddOptions}
         />
       ))}
       <Box marginLeft="10px" border="1px solid black">
