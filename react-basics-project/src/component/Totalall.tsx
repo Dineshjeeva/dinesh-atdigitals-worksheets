@@ -47,6 +47,20 @@ export default function Totalall() {
     console.log(addOptions);
   };
 
+  const removeoptioinBox = (index: number) => {
+    const Optioins = [...addOptions];
+    Optioins.splice(index, 1);
+    setAddOptions(Optioins);
+  };
+
+  const valueRemove = (i: number, index: number) => {
+    let valuesrem = [...addOptions];
+    valuesrem[i]["Options"].splice(index, 1);
+    setAddOptions(valuesrem);
+
+    console.log(i, valuesrem);
+  };
+
   return (
     <form onSubmit={submitHandler}>
       <Box height="350px">
@@ -56,7 +70,8 @@ export default function Totalall() {
           handleOption={handleOption}
           addValueHandler={addValueHandler}
           handleChange={handleChange}
-          setAddOptions={setAddOptions}
+          removeAddOption={removeoptioinBox}
+          valueRemove={valueRemove}
         />
 
         <Box padding="10px" paddingTop="25px">

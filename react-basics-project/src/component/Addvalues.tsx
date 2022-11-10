@@ -1,6 +1,6 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
-import { ChangeEvent, Dispatch, SetStateAction } from "react";
 
+import { ChangeEvent } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import Optionshead from "./Optionshead";
 
@@ -8,12 +8,11 @@ interface DefaultPropsOne {
   onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   addValueHandler: () => void;
   addValues: string[];
-  addOptions: { Name: string; Options: string[] }[];
   OptionName: string;
 
-  setAddOptions: Dispatch<
-    SetStateAction<{ Name: string; Options: string[] }[]>
-  >;
+  valueRemove: (i: number) => void;
+
+  removeAddOption: () => void;
 
   handleChange: (
     i: number,
@@ -26,21 +25,17 @@ export default function Addvalues({
   addValueHandler,
   handleChange,
   addValues,
-  setAddOptions,
-  addOptions,
-  OptionName,
-}: DefaultPropsOne) {
-  const removeInputFields = (index: number) => {
-    const rows = [...addOptions];
-    rows.splice(index, 1);
-    setAddOptions(rows);
-  };
-  console.log(addOptions);
 
+  OptionName,
+  valueRemove,
+  removeAddOption,
+}: DefaultPropsOne) {
   return (
     <Box
+      display={"flex"}
+      flexDirection="column"
       width="259px"
-      height="392px"
+      minHeight="392px"
       padding={1}
       marginLeft="10px"
       border="1px solid black"
@@ -50,18 +45,18 @@ export default function Addvalues({
         <Box marginBottom="20px">
           <TextField
             value={items}
-            InputProps={{
-              endAdornment: (
-                <Button onClick={() => removeInputFields(index)}>
-                  <CloseIcon color="action" />
-                </Button>
-              ),
-            }}
             id="standard-basic"
             label={"value " + (index + 1)}
             variant="standard"
             onChange={(e) => handleChange(index, e)}
           />
+
+          <Button
+            style={{ marginTop: "15px" }}
+            onClick={() => valueRemove(index)}
+          >
+            <CloseIcon color="action" />
+          </Button>
         </Box>
       ))}
 
@@ -69,12 +64,15 @@ export default function Addvalues({
         <Button variant="contained" onClick={addValueHandler}>
           ADD VALUE
         </Button>
+        <Box marginTop="20%">
+          <Button
+            onClick={removeAddOption}
+            style={{ background: "orange", color: "white" }}
+          >
+            REMOVE
+          </Button>
+        </Box>
       </Typography>
-      <Button
-        style={{ background: "orange", color: "white", marginTop: "25px" }}
-      >
-        REMOVE
-      </Button>
     </Box>
   );
 }
