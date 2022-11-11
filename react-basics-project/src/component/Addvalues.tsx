@@ -25,7 +25,6 @@ export default function Addvalues({
   addValueHandler,
   handleChange,
   addValues,
-
   OptionName,
   valueRemove,
   removeAddOption,

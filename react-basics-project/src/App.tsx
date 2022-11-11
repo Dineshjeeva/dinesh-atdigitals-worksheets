@@ -1,6 +1,6 @@
 import { Route, Switch } from "react-router-dom";
 
-import CatoonAddvendor from "./pages/cartoonvendor";
+import MainCartoon from "./pages/MainCartoon";
 import Totalall from "./component/Totalall";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
         <Totalall />
       </Route>
       <Route path="/cartoon-vendor">
-        <CatoonAddvendor />
+        <MainCartoon />
       </Route>
     </Switch>
   );
