@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Select } from "@mui/material";
+import { Box, Button, Grid, MenuItem, Select } from "@mui/material";
 
 import AddIcon from "@mui/icons-material/Add";
 import CartoonName from "./CartoonName";
@@ -32,23 +32,18 @@ export default function ElementOption({
               Cartoon Body-type
             </Grid>
             <Grid item xs={4}>
-              <Select
-                style={{ right: "73px" }}
-                value={item.dropdown}
-                fullWidth
-              />
+              <Select style={{ right: "73px" }} value={item.dropdown} fullWidth>
+                <MenuItem>Dropdounn</MenuItem>
+              </Select>
             </Grid>
-
-            <Grid paddingLeft={"10px"} item xs={4}>
-              <Button
-                style={{ right: "63px" }}
-                onClick={addOptionHandler}
-                startIcon={<AddIcon />}
-                variant="contained"
-              >
-                ADD OPTION
-              </Button>
-            </Grid>
+            <Button
+              style={{ right: "63px" }}
+              onClick={addOptionHandler}
+              startIcon={<AddIcon />}
+              variant="contained"
+            >
+              ADD OPTION
+            </Button>
             <OptionsField value={value} />
           </Grid>
         ))}

@@ -15,7 +15,6 @@ export default function OptionsField({ value }: optionProps) {
             <TextField
               style={{ right: "16px" }}
               fullWidth
-              value={item.field}
               id="standard-basic"
             />
           </Grid>

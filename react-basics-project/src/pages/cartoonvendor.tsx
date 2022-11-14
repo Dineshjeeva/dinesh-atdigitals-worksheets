@@ -5,6 +5,7 @@ import { FormEvent } from "react";
 
 // name : input box
 // type: dropdown
+
 interface MainProps {
   submitHandler: (e: FormEvent) => void;
   addValueHandler: () => void;
