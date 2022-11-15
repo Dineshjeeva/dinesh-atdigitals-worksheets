@@ -1,9 +1,28 @@
-import { Box, Grid, MenuItem, Select, Typography } from "@mui/material";
+import {
+  Box,
+  Grid,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  Typography,
+} from "@mui/material";
 
 interface DropNameProps {
   name: string;
+  onChange?:
+    | ((e: SelectChangeEvent<string>, child: React.ReactNode) => void)
+    | undefined;
+  Drop: { name: string; value: string }[];
+  value: string;
+  // values: string;
 }
-export default function Dropdown({ name }: DropNameProps) {
+
+export default function Dropdown({
+  name,
+  onChange,
+  Drop,
+  value,
+}: DropNameProps) {
   return (
     <Box>
       <Grid alignItems={"center"} container>
@@ -11,9 +30,10 @@ export default function Dropdown({ name }: DropNameProps) {
           <Typography>{name}</Typography>
         </Grid>
         <Grid item xs={6}>
-          <Select fullWidth>
-            <MenuItem>Simpsons</MenuItem>
-            <MenuItem>Turned Yellow</MenuItem>
+          <Select value={value} onChange={onChange} name={name} fullWidth>
+            {Drop.map((Drop) => (
+              <MenuItem value={Drop.value}>{Drop.name}</MenuItem>
+            ))}
           </Select>
         </Grid>
       </Grid>
