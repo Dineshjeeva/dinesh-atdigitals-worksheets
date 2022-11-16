@@ -2,17 +2,16 @@ import {
   Box,
   Grid,
   InputAdornment,
-  SelectChangeEvent,
   TextField,
   Typography,
 } from "@mui/material";
 
+import { ChangeEvent } from "react";
+
 interface FieldNameProps {
   name: string;
   values?: string;
-  onChange?:
-    | ((e: SelectChangeEvent<string>, child: React.ReactNode) => void)
-    | undefined;
+  onChange: (e: ChangeEvent) => void;
 }
 export default function DesignerField({
   name,

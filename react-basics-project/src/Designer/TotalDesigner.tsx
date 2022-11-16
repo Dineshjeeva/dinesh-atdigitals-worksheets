@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, SelectChangeEvent } from "@mui/material";
 import { ChangeEvent, FormEvent, useState } from "react";
 
 import Designer from "./Designer";
@@ -14,7 +14,7 @@ export default function TotalDesigner() {
   let handleChange = (
     i: number,
 
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement> | SelectChangeEvent
   ) => {
     let addVendor = [...add];
 

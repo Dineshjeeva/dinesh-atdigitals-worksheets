@@ -9,9 +9,7 @@ import {
 
 interface DropNameProps {
   name: string;
-  onChange?:
-    | ((e: SelectChangeEvent<string>, child: React.ReactNode) => void)
-    | undefined;
+  onChange?: (e: SelectChangeEvent) => void;
   Drop: { name: string; value: string }[];
   value: string;
   // values: string;
