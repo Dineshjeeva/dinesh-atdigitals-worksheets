@@ -1,10 +1,10 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, SelectChangeEvent } from "@mui/material";
 
 import { CarttoonFieldProps } from "./TotalDesigner";
 import Dropdown from "./Dropdown";
 
 interface DropProps {
-  handleChange: (e: any) => void;
+  handleChange: (e: SelectChangeEvent) => void;
   Dropvalues: CarttoonFieldProps;
 }
 

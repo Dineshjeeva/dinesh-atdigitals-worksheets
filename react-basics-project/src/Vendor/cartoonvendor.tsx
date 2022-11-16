@@ -1,7 +1,7 @@
 import { Box, Button } from "@mui/material";
+import { ChangeEvent, FormEvent } from "react";
 
 import ElementOption from "./ElementOption";
-import { FormEvent } from "react";
 
 // name : input box
 // type: dropdown
@@ -9,9 +9,13 @@ import { FormEvent } from "react";
 interface MainProps {
   submitHandler: (e: FormEvent) => void;
   addValueHandler: () => void;
-  addOptionHandler: () => void;
-  element: { type: string; dropdown: string }[];
-  value: { name: string; field: string }[];
+  addOptionHandler: (i: number) => void;
+  element: { type: string; Options: string[] }[];
+  handleChange: (
+    i: number,
+    item: number,
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
 }
 
 export default function CatoonAddvendor({
@@ -19,15 +23,15 @@ export default function CatoonAddvendor({
   addValueHandler,
   addOptionHandler,
   element,
-  value,
+  handleChange,
 }: MainProps) {
   return (
     <Box paddingLeft="10px">
       <ElementOption
-        element={element}
         addValueHandler={addValueHandler}
         addOptionHandler={addOptionHandler}
-        value={value}
+        element={element}
+        handleChange={handleChange}
       />
       <Box paddingTop="10px">
         <Button onClick={submitHandler} variant="contained">

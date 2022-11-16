@@ -1,10 +1,12 @@
-import { Box } from "@mui/material";
+import { Box, SelectChangeEvent } from "@mui/material";
+
 import { CarttoonFieldProps } from "./TotalDesigner";
+import { ChangeEvent } from "react";
 import Drop from "./Drop";
 import Field from "./Field";
 
 interface StateProps {
-  handleChange: (e: any) => void;
+  handleChange: (e: ChangeEvent<HTMLInputElement> | SelectChangeEvent) => void;
   Dropvalues: CarttoonFieldProps;
   fieldvalues: CarttoonFieldProps;
 }

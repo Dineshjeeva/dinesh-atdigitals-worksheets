@@ -2,6 +2,9 @@ import { Box, Button, Typography } from "@mui/material";
 
 import AddIcon from "@mui/icons-material/Add";
 
+// interface Addvendor {
+//   addVendorHandler: () => void;
+// }
 export default function Header() {
   return (
     <Box

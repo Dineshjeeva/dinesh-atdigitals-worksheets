@@ -1,11 +1,22 @@
-import { Box, Grid, TextField } from "@mui/material";
+import { Box, Grid, InputAdornment, TextField } from "@mui/material";
+
+import { ChangeEvent } from "react";
 
 interface optionProps {
-  value: { name: string; field: string }[];
+  value: string[];
+  onChange: (
+    i: number,
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
 }
-export default function OptionsField({ value }: optionProps) {
+export default function OptionsField({ value, onChange }: optionProps) {
   return (
-    <Box paddingLeft={"10px"} marginTop={"10px"} width={"800px"}>
+    <Box
+      paddingBottom={"10px"}
+      paddingLeft={"10px"}
+      marginTop={"10px"}
+      width={"800px"}
+    >
       {value.map((item, index) => (
         <Grid paddingTop={"10px"} alignItems={"center"} container>
           <Grid item xs={3}>
@@ -13,6 +24,8 @@ export default function OptionsField({ value }: optionProps) {
           </Grid>
           <Grid item xs={3}>
             <TextField
+              value={item}
+              onChange={(e) => onChange(index, e)}
               style={{ right: "16px" }}
               fullWidth
               id="standard-basic"
@@ -23,10 +36,13 @@ export default function OptionsField({ value }: optionProps) {
           </Grid>
           <Grid item xs={3}>
             <TextField
+              value={item}
+              onChange={(i) => onChange(index, i)}
               InputProps={{
-                startAdornment: "$",
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
               }}
-              value={item.field}
               id="standard-basic"
             />
           </Grid>

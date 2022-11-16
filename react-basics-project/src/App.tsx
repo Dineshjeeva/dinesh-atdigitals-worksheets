@@ -1,7 +1,6 @@
 import { Route, Switch } from "react-router-dom";
 
-import Designer from "./Designer/Designer";
-import MainCartoon from "./pages/MainCartoon";
+import MainCartoon from "./Vendor/MainCartoon";
 import TotalDesigner from "./Designer/TotalDesigner";
 import Totalall from "./component/Totalall";
 

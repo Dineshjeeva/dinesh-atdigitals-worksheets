@@ -11,7 +11,7 @@ import { ChangeEvent } from "react";
 interface FieldNameProps {
   name: string;
   values?: string;
-  onChange: (e: ChangeEvent) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 export default function DesignerField({
   name,

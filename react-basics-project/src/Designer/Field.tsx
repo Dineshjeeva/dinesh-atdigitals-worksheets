@@ -1,10 +1,11 @@
 import { Box, Grid } from "@mui/material";
 
 import { CarttoonFieldProps } from "./TotalDesigner";
+import { ChangeEvent } from "react";
 import DesignerField from "./DesignerField";
 
 interface FeildProps {
-  handleChange: (e: any) => void;
+  handleChange: (e:ChangeEvent<HTMLInputElement>) => void;
   fieldProps: CarttoonFieldProps;
 }
 
