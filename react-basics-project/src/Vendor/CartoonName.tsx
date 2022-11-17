@@ -1,6 +1,17 @@
 import { Box, Grid, TextField } from "@mui/material";
 
-export default function CartoonName() {
+import { ChangeEvent } from "react";
+
+interface CartoonNameProps {
+  // Cname: string;
+  onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  cartoonname?: string;
+}
+
+export default function CartoonName({
+  onChange,
+  cartoonname,
+}: CartoonNameProps) {
   return (
     <Box marginTop={"10px"} paddingLeft={"10px"} width={"800px"}>
       <Grid
@@ -13,7 +24,11 @@ export default function CartoonName() {
           <Grid>Cartoon Name</Grid>
         </Grid>
         <Grid item xs={8}>
-          <TextField style={{ right: "73px" }} />
+          <TextField
+            value={cartoonname}
+            onChange={onChange}
+            style={{ right: "73px" }}
+          />
         </Grid>
       </Grid>
     </Box>

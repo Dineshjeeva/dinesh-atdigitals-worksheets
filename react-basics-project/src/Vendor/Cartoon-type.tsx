@@ -1,18 +1,28 @@
-import { Button, Grid, MenuItem, Select } from "@mui/material";
+import {
+  Button,
+  Grid,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+} from "@mui/material";
 
 import AddIcon from "@mui/icons-material/Add";
 
 interface BodyTypetprops {
   addOptionHandler: () => void;
+  onChange: (e: SelectChangeEvent) => void;
 }
-export default function CartoonType({ addOptionHandler }: BodyTypetprops) {
+export default function CartoonType({
+  addOptionHandler,
+  onChange,
+}: BodyTypetprops) {
   return (
     <Grid paddingBottom={"10px"} alignItems={"center"} container>
       <Grid item xs={4}>
         Cartoon Body-type
       </Grid>
       <Grid item xs={4}>
-        <Select style={{ right: "73px" }} fullWidth>
+        <Select onChange={onChange} style={{ right: "73px" }} fullWidth>
           <MenuItem value={"Dropdown"}>Dropdounn</MenuItem>
           <MenuItem value={"Dropdown12"}>Dropdounn12</MenuItem>
         </Select>

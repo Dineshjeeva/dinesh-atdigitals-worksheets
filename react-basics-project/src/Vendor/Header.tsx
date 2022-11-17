@@ -2,10 +2,10 @@ import { Box, Button, Typography } from "@mui/material";
 
 import AddIcon from "@mui/icons-material/Add";
 
-// interface Addvendor {
-//   addVendorHandler: () => void;
-// }
-export default function Header() {
+interface Addvendor {
+  addkartHandler: () => void;
+}
+export default function Header({ addkartHandler }: Addvendor) {
   return (
     <Box
       display="flex"
@@ -25,7 +25,11 @@ export default function Header() {
         Cartoon Details
       </Typography>
       <Box marginRight="80px">
-        <Button startIcon={<AddIcon />} variant="contained">
+        <Button
+          onClick={addkartHandler}
+          startIcon={<AddIcon />}
+          variant="contained"
+        >
           ADD CARTOON
         </Button>
       </Box>
