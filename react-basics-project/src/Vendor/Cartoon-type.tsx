@@ -23,8 +23,8 @@ export default function CartoonType({
       </Grid>
       <Grid item xs={4}>
         <Select onChange={onChange} style={{ right: "73px" }} fullWidth>
-          <MenuItem value={"Dropdown"}>Dropdounn</MenuItem>
-          <MenuItem value={"Dropdown12"}>Dropdounn12</MenuItem>
+          <MenuItem value={"Dropdown"}>Dropdown</MenuItem>
+          <MenuItem value={"Dropdown12"}>Dropdown12</MenuItem>
         </Select>
       </Grid>
       <Button

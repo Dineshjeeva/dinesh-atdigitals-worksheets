@@ -58,6 +58,7 @@ export default function ElementOption({
               onChange={(e) => handleDrop(index, e)}
             />
             <OptionsField
+              key={index}
               value={element[index]["Options"]}
               onChange={(i, e) => handleChange(i, index, e)}
               onChange1={(i, e) => handleChange2(i, index, e)}

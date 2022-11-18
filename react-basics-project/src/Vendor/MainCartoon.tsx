@@ -4,6 +4,17 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import CatoonAddvendor from "./cartoonvendor";
 import Header from "./Header";
 
+// interface cartoonnameProps {
+//   cartoon: string;
+// }
+
+// interface elementsProps {
+//   element: {
+//     cartoondrop: string;
+//     Options: { name: string; value: string }[];
+//   };
+// }
+
 export default function MainCartoon() {
   const [element, setElement] = useState<
     {
@@ -12,8 +23,14 @@ export default function MainCartoon() {
       Options: { name: string; value: string }[];
     }[]
   >([
-    // { cartoon: "Dinesh", cartoondrop: "Dropdown12", Options: ["bluw", "32"] },
-    // { cartoon: "don", cartoondrop: "Dropdown", Options: ["ff", "32"] },
+    // {
+    //   cartoon: "dinesh",
+    //   cartoondrop: "Dropdown",
+    //   Options: [
+    //     { name: "Full Body", value: "12" },
+    //     { name: "Shoulder up", value: "23" },
+    //   ],
+    // },
   ]);
 
   console.log("==============");
@@ -37,6 +54,7 @@ export default function MainCartoon() {
 
     console.log(element);
   };
+
   let addOptionHandler = (i: number) => {
     let newAddOptions = [...element];
     newAddOptions[i]["Options"] = [
@@ -44,6 +62,7 @@ export default function MainCartoon() {
       { name: "", value: "" },
     ];
     setElement(newAddOptions);
+    console.log("Newaa" + newAddOptions);
   };
   let handleChange2 = (
     i: number,
@@ -55,7 +74,6 @@ export default function MainCartoon() {
     setElement(newAddOptions);
     console.log("New" + newAddOptions);
   };
-
   let handleChange = (
     i: number,
     item: number,
@@ -85,18 +103,16 @@ export default function MainCartoon() {
   return (
     <Box paddingLeft="10px">
       <Header addkartHandler={addkartHandler} />
-      {element.map((e, index) => (
-        <CatoonAddvendor
-          submitHandler={submitHandler}
-          addValueHandler={addValueHandler}
-          addOptionHandler={addOptionHandler}
-          element={element}
-          handleChange={handleChange}
-          handleChangeName={handleChangeName}
-          handleChange2={handleChange2}
-          handleDrop={handleDrop}
-        />
-      ))}
+      <CatoonAddvendor
+        submitHandler={submitHandler}
+        addValueHandler={addValueHandler}
+        addOptionHandler={addOptionHandler}
+        element={element}
+        handleChange={handleChange}
+        handleChangeName={handleChangeName}
+        handleChange2={handleChange2}
+        handleDrop={handleDrop}
+      />
 
       <Box paddingTop="10px">
         <Button onClick={submitHandler} variant="contained">

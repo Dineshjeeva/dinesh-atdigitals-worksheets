@@ -3,9 +3,6 @@ import { ChangeEvent, FormEvent } from "react";
 
 import ElementOption from "./ElementOption";
 
-// name : input box
-// type: dropdown
-
 interface MainProps {
   submitHandler: (e: FormEvent) => void;
 
@@ -35,7 +32,6 @@ interface MainProps {
 }
 
 export default function CatoonAddvendor({
-  submitHandler,
   addValueHandler,
   addOptionHandler,
   element,
