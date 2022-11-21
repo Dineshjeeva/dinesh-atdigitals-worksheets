@@ -4,16 +4,71 @@ import {
   InputLabel,
   MenuItem,
   Select,
+  SelectChangeEvent,
   TextField,
   Typography,
 } from "@mui/material";
+import { ChangeEvent, useState } from "react";
 
 export default function CalculatorPage() {
+  const [field, setField] = useState<number>(0);
+  const [field2, setField2] = useState<number>(0);
+  const [operation, setOperation] = useState<string>("Add");
+  const [equal, setEqual] = useState<string | number>();
+
+  const handleFieldChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    let value1 = parseInt(e.target.value);
+    setField(value1);
+  };
+
+  const handleFieldChange2 = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    let value2 = parseInt(e.target.value);
+
+    setField2(value2);
+  };
+  const handleOperation = (e: SelectChangeEvent<string>) => {
+    setOperation(e.target.value);
+    const operations = e.target.value;
+    setOperation(e.target.value);
+
+    switch (operations) {
+      case "+":
+        let Add = field + field2;
+        setEqual(Add);
+        break;
+
+      case "-":
+        let Minus = field - field2;
+        setEqual(Minus);
+        break;
+      case "*":
+        let Multiply = field * field2;
+        setEqual(Multiply);
+        break;
+      case "/":
+        let Divide = field / field2;
+        setEqual(Divide);
+        break;
+      case "^":
+        let Power = field ** field2;
+        setEqual(Power);
+        break;
+    }
+    setOperation(operations);
+  };
+  console.log("opertsaions" + operation);
+
   return (
     <Box margin={"30px"} display={"flex"}>
       <Box marginRight={"30px"}>
         <TextField
+          onChange={handleFieldChange}
           id="standard-number"
+          value={field}
           label="Value 1"
           type="number"
           InputLabelProps={{
@@ -22,13 +77,17 @@ export default function CalculatorPage() {
           variant="standard"
         />
       </Box>
-      <Box marginRight={"30px"}></Box>
-      <Box>
+      <Box marginRight={"30px"}>
+        {" "}
         <FormControl variant="standard" sx={{ m: 1, minWidth: 220 }}>
           <InputLabel id="demo-simple-select-standard-label">
             Operations
           </InputLabel>
-          <Select label="Operations">
+          <Select
+            value={operation}
+            onChange={handleOperation}
+            label="Operations"
+          >
             <MenuItem value={"+"}>+</MenuItem>
             <MenuItem value={"-"}>-</MenuItem>
             <MenuItem value={"*"}>*</MenuItem>
@@ -37,8 +96,11 @@ export default function CalculatorPage() {
           </Select>
         </FormControl>
       </Box>
+
       <Box marginRight={"30px"}>
         <TextField
+          onChange={handleFieldChange2}
+          value={field2}
           id="standard-number"
           label="Value 2"
           type="number"
@@ -49,7 +111,7 @@ export default function CalculatorPage() {
         />
       </Box>
       <Box>
-        <Typography> = </Typography>
+        <Typography>= {equal}</Typography>
       </Box>
     </Box>
   );
