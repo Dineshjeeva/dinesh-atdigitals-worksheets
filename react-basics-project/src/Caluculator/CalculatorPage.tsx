@@ -11,30 +11,36 @@ import {
 import { ChangeEvent, useState } from "react";
 
 export default function CalculatorPage() {
-  const [field, setField] = useState<number>(0);
-  const [field2, setField2] = useState<number>(0);
-  const [operation, setOperation] = useState<string>("Add");
-  const [equal, setEqual] = useState<string | number>();
+  const [field, setField] = useState<number>();
+  const [field2, setField2] = useState<number>();
+  const [operation, setOperation] = useState<string>("");
+  const [equal, setEqual] = useState<string | number>("");
 
   const handleFieldChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    let value1 = parseInt(e.target.value);
-    setField(value1);
+    let value1 = e.target.value;
+
+    setField(parseFloat(value1));
   };
 
   const handleFieldChange2 = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    let value2 = parseInt(e.target.value);
+    let value2 = e.target.value;
 
-    setField2(value2);
+    setField2(parseFloat(value2));
   };
   const handleOperation = (e: SelectChangeEvent<string>) => {
     setOperation(e.target.value);
     const operations = e.target.value;
-    setOperation(e.target.value);
 
+    if (field === undefined) {
+      return field;
+    }
+    if (field2 === undefined) {
+      return field2;
+    }
     switch (operations) {
       case "+":
         let Add = field + field2;
@@ -58,16 +64,59 @@ export default function CalculatorPage() {
         setEqual(Power);
         break;
     }
-    setOperation(operations);
   };
-  console.log("opertsaions" + operation);
+  const sumHandlerChange = () => {
+    if (field === undefined) {
+      return field;
+    }
+    if (field2 === undefined) {
+      return field2;
+    }
+
+    if (isNaN(field)) {
+      setEqual("");
+      return;
+    }
+    if (isNaN(field2)) {
+      setEqual("");
+      return;
+    }
+    let operators = operation;
+
+    switch (operators) {
+      case "+":
+        let Add = field + field2;
+        setEqual(Add);
+        break;
+
+      case "-":
+        let Minus = field - field2;
+        setEqual(Minus);
+        break;
+      case "*":
+        let Multiply = field * field2;
+        setEqual(Multiply);
+        break;
+      case "/":
+        let Divide = field / field2;
+        setEqual(Divide);
+        break;
+      case "^":
+        let Power = field ** field2;
+        setEqual(Power);
+        break;
+    }
+
+    setOperation(operation);
+  };
+  console.log("+++++" + equal);
 
   return (
     <Box margin={"30px"} display={"flex"}>
       <Box marginRight={"30px"}>
         <TextField
+          onKeyUp={sumHandlerChange}
           onChange={handleFieldChange}
-          id="standard-number"
           value={field}
           label="Value 1"
           type="number"
@@ -84,6 +133,7 @@ export default function CalculatorPage() {
             Operations
           </InputLabel>
           <Select
+            onKeyUp={sumHandlerChange}
             value={operation}
             onChange={handleOperation}
             label="Operations"
@@ -99,6 +149,7 @@ export default function CalculatorPage() {
 
       <Box marginRight={"30px"}>
         <TextField
+          onKeyUp={sumHandlerChange}
           onChange={handleFieldChange2}
           value={field2}
           id="standard-number"
@@ -111,7 +162,7 @@ export default function CalculatorPage() {
         />
       </Box>
       <Box>
-        <Typography>= {equal}</Typography>
+        <Typography> = {equal}</Typography>
       </Box>
     </Box>
   );
