@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   FormControl,
   InputLabel,
   MenuItem,
@@ -11,10 +12,13 @@ import {
 import { ChangeEvent, useState } from "react";
 
 export default function CalculatorPage() {
-  const [field, setField] = useState<number>();
-  const [field2, setField2] = useState<number>();
-  const [operation, setOperation] = useState<string>("");
-  const [equal, setEqual] = useState<string | number>("");
+  let localValue = JSON.parse(`${window.localStorage.getItem("value1") || ""}`);
+  console.log("@@@@@@@@@@" + localValue);
+  const [field, setField] = useState<number>(localValue.field1);
+  const [field2, setField2] = useState<number>(localValue.field2);
+  const [operation, setOperation] = useState<string>(localValue.operation);
+  const [equal, setEqual] = useState<string | number>(localValue.result);
+  const [save, setSave] = useState<string>();
 
   const handleFieldChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -28,9 +32,9 @@ export default function CalculatorPage() {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     let value2 = e.target.value;
-
     setField2(parseFloat(value2));
   };
+
   const handleOperation = (e: SelectChangeEvent<string>) => {
     setOperation(e.target.value);
     const operations = e.target.value;
@@ -111,8 +115,21 @@ export default function CalculatorPage() {
   };
   console.log("+++++" + equal);
 
+  const data = {
+    field1: field,
+    operation: operation,
+    field2: field2,
+    result: equal,
+  };
+  window.localStorage.setItem("value1", JSON.stringify(data));
+
+  const SaveHandler = () => {
+    const Result = field + "" + operation + "" + field2 + "=" + equal + "";
+
+    setSave(Result);
+  };
   return (
-    <Box margin={"30px"} display={"flex"}>
+    <Box margin={"30px"} display={"flex"} alignItems={"center"}>
       <Box marginRight={"30px"}>
         <TextField
           onKeyUp={sumHandlerChange}
@@ -161,8 +178,20 @@ export default function CalculatorPage() {
           variant="standard"
         />
       </Box>
-      <Box>
+      <Box display={"flex"} alignItems="center" marginLeft={"20px"}>
         <Typography> = {equal}</Typography>
+      </Box>
+
+      <Box display={"flex"} alignItems="center" marginLeft={"20px"}>
+        <Button
+          style={{ display: "flex", padding: "10px" }}
+          onClick={SaveHandler}
+          // style={{ left: "30px" }}
+          variant="contained"
+        >
+          Save
+        </Button>
+        <Typography marginLeft={"10px"}>{save}</Typography>
       </Box>
     </Box>
   );
